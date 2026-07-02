@@ -1,0 +1,188 @@
+Here's a modern **Exam Calculator** (black theme) using **HTML, CSS, and JavaScript** in a single file. It includes a clean UI, responsive design, and standard exam-calculator functions (+, -, ×, ÷, %, √, backspace, clear).
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Calculator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+
+.calculator{
+    width:350px;
+    background:#000;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 25px rgba(255,255,255,0.15);
+}
+
+.title{
+    text-align:center;
+    color:white;
+    font-size:22px;
+    margin-bottom:15px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.display{
+    width:100%;
+    height:80px;
+    border:none;
+    outline:none;
+    background:#111;
+    color:white;
+    text-align:right;
+    padding:15px;
+    font-size:32px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+button{
+    height:65px;
+    border:none;
+    border-radius:12px;
+    font-size:22px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.num{
+    background:#222;
+    color:white;
+}
+
+.operator{
+    background:#ff9500;
+    color:white;
+}
+
+.equal{
+    background:#00c853;
+    color:white;
+}
+
+.clear{
+    background:#d50000;
+    color:white;
+}
+
+.special{
+    background:#444;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <div class="title">EXAM CALCULATOR</div>
+
+    <input type="text" id="display" class="display" readonly>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button class="special" onclick="backspace()">⌫</button>
+        <button class="special" onclick="append('%')">%</button>
+        <button class="operator" onclick="append('/')">÷</button>
+
+        <button class="num" onclick="append('7')">7</button>
+        <button class="num" onclick="append('8')">8</button>
+        <button class="num" onclick="append('9')">9</button>
+        <button class="operator" onclick="append('*')">×</button>
+
+        <button class="num" onclick="append('4')">4</button>
+        <button class="num" onclick="append('5')">5</button>
+        <button class="num" onclick="append('6')">6</button>
+        <button class="operator" onclick="append('-')">−</button>
+
+        <button class="num" onclick="append('1')">1</button>
+        <button class="num" onclick="append('2')">2</button>
+        <button class="num" onclick="append('3')">3</button>
+        <button class="operator" onclick="append('+')">+</button>
+
+        <button class="special" onclick="squareRoot()">√</button>
+        <button class="num" onclick="append('0')">0</button>
+        <button class="num" onclick="append('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function append(value){
+    display.value += value;
+}
+
+function clearDisplay(){
+    display.value = "";
+}
+
+function backspace(){
+    display.value = display.value.slice(0,-1);
+}
+
+function calculate(){
+    try{
+        display.value = eval(display.value);
+    }
+    catch{
+        display.value = "Error";
+    }
+}
+
+function squareRoot(){
+    try{
+        display.value = Math.sqrt(eval(display.value));
+    }
+    catch{
+        display.value = "Error";
+    }
+}
+</script>
+
+</body>
+</html>
+```
+
+### Features
+
+✅ Modern Black UI
+✅ Exam Style Calculator
+✅ Responsive Design
+✅ Addition, Subtraction, Multiplication, Division
+✅ Percentage (%)
+✅ Square Root (√)
+✅ Backspace (⌫)
+✅ Clear (C)
+✅ Smooth Hover Animation
+✅ Single HTML File (HTML + CSS + JavaScript)
